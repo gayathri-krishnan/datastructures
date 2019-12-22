@@ -30,4 +30,18 @@ public class CheckBracketsTest {
 		String in = "foo(bar[i);";
 		Assert.assertEquals("10", cb.isBalanced(in));
 	}
+	
+	@Test
+	public void testMisMatch2() {
+		String in = "{}{}]";
+		Assert.assertEquals("5", cb.isBalanced(in));
+	}
+	
+	@Test
+	public void testMisMatch3() {
+		String in = "[](()";
+		Assert.assertEquals("3", cb.isBalanced(in));
+	}
+	
 }
+
