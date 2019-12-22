@@ -1,5 +1,4 @@
 package com.datastructures.assignment.week1;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -37,7 +36,8 @@ class CheckBrackets {
 
 	protected static String isBalanced(String text) {
 		Stack<Bracket> bracketStack = new Stack<Bracket>();
-        for (int position = 0; position < text.length(); ++position) {
+		int position = 0;
+        for (; position < text.length(); ++position) {
             char next = text.charAt(position);
 
             if (next == '(' || next == '[' || next == '{') {
@@ -47,7 +47,7 @@ class CheckBrackets {
 
             if (next == ')' || next == ']' || next == '}') {
             	 if(bracketStack.isEmpty()) {
-                 	return "1";
+                 	return String.valueOf(position+1);
                  }
                  Bracket top = bracketStack.pop();
                  if(!top.Match(next)) {
@@ -55,7 +55,7 @@ class CheckBrackets {
                  }
             }
         }
-        return bracketStack.isEmpty()?"Success":"1";
+        return bracketStack.isEmpty()?"Success":String.valueOf(bracketStack.pop().position);
 	}
 	
 
